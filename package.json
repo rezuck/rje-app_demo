@@ -1,0 +1,39 @@
+{
+  "name": "rje-app5",
+  "version": "1.0.0",
+  "description": "node server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "webpack",
+    "dev": "nodemon ./server.js localhost 3080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezuck/rje-app5.git"
+  },
+  "author": "Ron Ezuck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rezuck/rje-app5/issues"
+  },
+  "homepage": "https://github.com/rezuck/rje-app5#readme",
+  "dependencies": {
+    "@angular/animations": "^12.0.5",
+    "@angular/cdk": "^12.0.5",
+    "@angular/material": "^12.0.5",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "fancy-log": "^1.3.3",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.0.1",
+    "nodemon": "^2.0.7",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-stream": "^5.2.1"
+  }
+}

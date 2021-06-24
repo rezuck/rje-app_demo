@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="mrgnbtm">
+  <app-users [users]="users"></app-users>
+</div>
+
+<div class="container" *ngIf="false">
+  <div class="row">
+    <div class="col-md-7 mrgnbtm">
+      <h2>Create User</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="exampleInputPassword1">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" id="exampleInputPassword1" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="exampleInputTeam1">Team</label>
+            <input type="text" class="form-control" formControlName="team" id="exampleInputTeam1" aria-describedby="teamHelp" placeholder="Team">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="exampleInputJob1">Job Title</label>
+            <input type="text" class="form-control" formControlName="job" id="exampleInputJob1" aria-describedby="jobHelp" placeholder="Job Title">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="exampleInputStatus1">Status</label>
+            <input type="text" class="form-control" formControlName="status" id="exampleInputStatus1" aria-describedby="emailHelp" placeholder="Status">
+          </div>
+        </div>
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
+      </form>
+    </div>
+    </div>
+    <div class="col-md-4 mrgnbtm">
+      <app-display-board
+       [userCount]="userCount"
+       (getUsersEvent)="getAllUsers()"
+      >
+      </app-display-board>
+    </div>
+</div>
+

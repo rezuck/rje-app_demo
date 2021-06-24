@@ -1,0 +1,51 @@
+
+<div class="mrgnbtm" *ngIf="newUser">
+  <app-new-user></app-new-user>
+</div>
+
+<div class="container">
+  <app-edituser *ngIf="selectedUser" [selectedUser]="selectedUser"></app-edituser>
+</div>
+
+<div class="container" *ngIf="showList">
+  <h2>Users</h2>
+            <div class="btn">
+            <button class="btn btn-warning"
+              (click)="addUser()"
+            >Add new user</button>
+          </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Team</th>
+        <th>Job Title</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>  
+          <div class="btn">
+            <button class="btn btn-warning"
+              (click)="editUser(user)"
+            >Edit</button>
+          </div>
+          <div class="btn">
+            <button class="btn btn-warning"
+              (click)="deleteUser(user)"
+            >Delete</button>
+          </div>
+        </td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.team}}</td>
+        <td>{{user.job}}</td>
+        <td>{{user.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
