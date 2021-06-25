@@ -46,7 +46,7 @@ app.delete('/api/users/:id', (req, res) => {
     let uid = users[i].id.toString();
 
     if (uid === idval) {
-removeAllListeners      users.splice(i, 1);
+      users.splice(i, 1);
       break;
     }
 
