@@ -3,13 +3,13 @@ Angular and Node Example
 
 This app was written using Visual Studio Code.
 
-To run it, start a terminal.
+To run it, open a terminal.
 
 In the root directory enter:
 
 npm run dev
 
-This compiles and starts the Node.js serve.
+This compiles and starts the Node.js server.
 
 In a new terminal change the directory to my-app and enter:
 
