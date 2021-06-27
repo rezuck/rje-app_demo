@@ -27,11 +27,12 @@
           </div>
         </div>
          <div class="row">
-          <div class="form-group col-md-12">
             <label for="exampleInputStatus1">Status</label>
-            <input type="text" class="form-control" formControlName="status" id="exampleInputStatus1" aria-describedby="statusHelp" placeholder="Status">
+            <select class="custom-select" (change)="changeStatus($event)" [(ngModel)]="selectedStatus" formControlName="status">
+               <option value="" disabled>Status</option>
+               <option *ngFor="let stat of statuses" value={{stat}}>{{stat}}</option>
+            </select>
           </div>
-        </div>
        <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
       </form>
     </div>

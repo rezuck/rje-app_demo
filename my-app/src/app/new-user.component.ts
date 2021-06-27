@@ -18,6 +18,9 @@ export class NewUserComponent implements OnDestroy {
   title = 'rje-app5';
   selectedUser: User;
   newUser: boolean = false;
+  statuses: any = ["active", "inactive", "new", "retired"];
+  selectedStatus: string = "";
+ 
 
   userForm = new FormGroup({
     id: new FormControl(''),
@@ -42,6 +45,7 @@ export class NewUserComponent implements OnDestroy {
     GlobalValues.currentId = this.userCount;
  
     this.userForm.patchValue({id: this.userCount});
+    this.userForm.patchValue({status: this.selectedStatus});
     this.appService.addUser(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       console.log('message::::', data);
 
@@ -51,6 +55,16 @@ export class NewUserComponent implements OnDestroy {
     this.newUser = false;
     this.getAllUsers();
     window.location.reload();
+  }
+
+  changeStatus(e) {
+    this.userForm.patchValue({status: e.target.value}, {
+      onlySelf: true
+    });
+  //  this.userForm.patchValue({status: this.selectedStatus}, {
+  //    onlySelf: true
+  //  });
+    this.selectedStatus = e.target.value;
   }
 
   getAllUsers() {

@@ -9,12 +9,15 @@ import { User } from './app-state/models';
   selector: 'app-edituser',
   templateUrl: './edituser.component.html',
   styleUrls: ['./edituser.component.css']
+  
 })
 export class EditUserComponent implements OnDestroy {
 
   constructor(private appService: AppService) {}
 
   title = 'rje-app5';
+  statuses: any = ["active", "inactive", "new", "retired"];
+  selectedStatus: string = "";
 
   @Input() selectedUser: User;
 
@@ -44,6 +47,17 @@ export class EditUserComponent implements OnDestroy {
       team: this.selectedUser.team, 
       job: this.selectedUser.job, 
       status: this.selectedUser.status});
+      this.selectedStatus = this.selectedUser.status;
+  }
+
+  changeStatus(e) {
+    this.userForm.patchValue({status: e.target.value}, {
+      onlySelf: true
+    });
+  //  this.userForm.patchValue({status: this.selectedStatus}, {
+  //    onlySelf: true
+  //  });
+    this.selectedStatus = e.target.value;
   }
 
   onSave() {
