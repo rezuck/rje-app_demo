@@ -4,13 +4,18 @@ const app = express(),
       bodyParser = require("body-parser");
       port = 3080;
 
-const users = [];
+      const users = [];
 
 app.use(bodyParser.json());
 app.use(express.static(process.cwd()+"/my-app/dist/rje-app5/"));
 
 app.get('/api/users', (req, res) => {
   res.json(users);
+});
+
+app.get('/api/statuses', (req, res) => {
+  const statuses = ["active", "inactive", "new", "retired"];
+  res.json(statuses);
 });
 
 app.post('/api/user', (req, res) => {
@@ -25,7 +30,6 @@ app.put('/api/user', (req, res) => {
  
   for (var i = 0; i < users.length; i++) {
     if (users[i].id === idval) {
-      console.log("Id = " + i);
       users[i].firstName = user.firstName;
       users[i].lastName = user.lastName;
       users[i].team = user.team;

@@ -13,10 +13,13 @@ import { User } from './app-state/models';
 })
 export class EditUserComponent implements OnDestroy {
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) {
+    this.getStatuses();
+  }
 
   title = 'rje-app5';
-  statuses: any = ["active", "inactive", "new", "retired"];
+  //statuses: any = ["active", "inactive", "new", "retired"];
+  statuses: any = [];
   selectedStatus: string = "";
 
   @Input() selectedUser: User;
@@ -82,7 +85,14 @@ export class EditUserComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+    getStatuses() {
+    this.appService.getStatuses().pipe(takeUntil(this.destroy$)).subscribe((statuses: any[]) => {
+      this.statuses = statuses;
+      });
+ 
+    }
+
+ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }

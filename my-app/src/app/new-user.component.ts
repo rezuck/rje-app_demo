@@ -13,12 +13,15 @@ import {GlobalValues} from "./global-values";
 })
 export class NewUserComponent implements OnDestroy {
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) {
+    this.getStatuses();
+  }
 
   title = 'rje-app5';
   selectedUser: User;
   newUser: boolean = false;
-  statuses: any = ["active", "inactive", "new", "retired"];
+  statuses: any[] = [];
+  //statuses: any = ["active", "inactive", "new", "retired"];
   selectedStatus: string = "";
  
 
@@ -43,7 +46,6 @@ export class NewUserComponent implements OnDestroy {
     this.userCount = GlobalValues.currentId + 1;
 
     GlobalValues.currentId = this.userCount;
- 
     this.userForm.patchValue({id: this.userCount});
     this.userForm.patchValue({status: this.selectedStatus});
     this.appService.addUser(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
@@ -74,6 +76,13 @@ export class NewUserComponent implements OnDestroy {
 
       });
   }
+
+  getStatuses() {
+    this.appService.getStatuses().pipe(takeUntil(this.destroy$)).subscribe((statuses: any[]) => {
+      this.statuses = statuses;
+      });
+ 
+    }
 
   ngOnDestroy() {
     this.destroy$.next(true);

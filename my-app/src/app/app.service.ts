@@ -10,6 +10,10 @@ export class AppService {
 
   rootURL = '/api';
 
+  getStatuses() {
+    return this.http.get(this.rootURL + '/statuses');
+  }
+
   getUsers() {
     return this.http.get(this.rootURL + '/users');
   }

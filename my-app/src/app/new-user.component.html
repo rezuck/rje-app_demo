@@ -32,8 +32,11 @@
                <option value="" disabled>Status</option>
                <option *ngFor="let stat of statuses" value={{stat}}>{{stat}}</option>
             </select>
+            <hr />
           </div>
-       <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
+          <div class="row">
+            <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
+          </div>
       </form>
     </div>
     </div>
